@@ -1,36 +1,59 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en" class="h-full w-full">
+<head>
+    <meta charset="UTF-8">
+    <title>@yield('title') - SPK Beasiswa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+    <style>
+        html, body {
+            border-radius: 0 !important;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body class="bg-[#C7CEDB] h-screen w-screen overflow-hidden">
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+    <!-- Sidebar -->
+    <div class="fixed top-0 left-0 w-64 h-full bg-blue-700">
+        @include('layouts.sidebar')
+    </div>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+    <!-- Main Content -->
+    <div class="ml-64 flex flex-col h-full">
+
+        <!-- Navbar -->
+        <div class="h-16 bg-white flex items-center justify-end px-6 shadow-md">
+            @include('layouts.navbar')
         </div>
-    </body>
+
+        <!-- Header Title -->
+        <div class="bg-[#C7CEDB] px-6 py-4 flex items-center space-x-2 sticky top-16 z-10">
+            <i data-lucide="home" class="w-7 h-7 text-black-700"></i>
+            <h1 class="text-2xl font-bold text-black-700">@yield('title')</h1>
+        </div>
+
+        <!-- Fixed White Content -->
+        <div class="flex-1 bg-white m-6 shadow-md overflow-hidden flex flex-col">
+
+            <!-- Scrollable Inner Content -->
+            <div class="flex-1 overflow-y-auto p-6">
+                @yield('content')
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
 </html>
