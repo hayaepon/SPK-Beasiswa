@@ -13,7 +13,7 @@
         </a>
 
         <!-- Menu Data Calon Penerima -->
-        <a href="/datapenerima" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
+        <a href="/data-calon-penerima" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
             <i data-lucide="users" class="w-5 h-5"></i>
             <span>Data Calon Penerima</span>
         </a>
@@ -39,7 +39,7 @@
         </div>
 
         <!-- Menu Perhitungan SMART -->
-        <a href="/perhitungan" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
+        <a href="/perhitungan-smart" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
             <i data-lucide="calculator" class="w-5 h-5"></i>
             <span>Perhitungan SMART</span>
         </a>

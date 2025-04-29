@@ -1,7 +1,10 @@
 <?php
+
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\SubKriteriaController;
+use App\Http\Controllers\CalonPenerimaController;
+use App\Http\Controllers\PerhitunganSMARTController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk halaman utama
@@ -19,12 +22,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Rute untuk dashboard Super Admin
     Route::get('/dashboard-superadmin', function () {
         return view('dashboard-superadmin');
-    });
+    })->middleware('role:superadmin'); // Menambahkan middleware role jika diperlukan
 
     // Rute untuk dashboard Admin
     Route::get('/dashboard-admin', function () {
         return view('dashboard-admin');
-    });
+    })->middleware('role:admin'); // Menambahkan middleware role jika diperlukan
 
     // Route untuk Kriteria & Bobot
     Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria.index');
@@ -42,6 +45,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/subkriteria/edit/{id}', [SubKriteriaController::class, 'edit'])->name('subkriteria.edit');
     Route::put('/subkriteria/update/{id}', [SubKriteriaController::class, 'update'])->name('subkriteria.update');
     Route::delete('/subkriteria/destroy/{id}', [SubKriteriaController::class, 'destroy'])->name('subkriteria.destroy');
+});
+
+// Route untuk Data Calon Penerima
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/data-calon-penerima', [CalonPenerimaController::class, 'index'])->name('data-calon-penerima');
+    Route::post('/calon-penerima', [CalonPenerimaController::class, 'store'])->name('calon-penerima.store');
+    Route::get('/calon-penerima/edit/{id}', [CalonPenerimaController::class, 'edit'])->name('calon-penerima.edit');
+    Route::delete('/calon-penerima/{id}', [CalonPenerimaController::class, 'destroy'])->name('calon-penerima.destroy');
+});
+
+//Route perhitungan smart
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Rute untuk halaman Perhitungan SMART untuk Super Admin
+    Route::get('/perhitungan-smart', [PerhitunganSMARTController::class, 'index'])->name('perhitungan-smart.index');
+    
+    // Rute untuk tombol Hitung
+    Route::post('/perhitungan-smart/hitung', [PerhitunganSMARTController::class, 'hitung'])->name('perhitungan-smart.hitung');
 });
 
 // Route untuk profile
