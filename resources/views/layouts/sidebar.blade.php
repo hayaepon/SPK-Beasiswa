@@ -6,19 +6,22 @@
 
     <!-- Menu Navigasi -->
     <nav class="flex-1 mt-4 px-4 space-y-2">
+        <!-- Menu Dashboard -->
         <a href="/dashboard" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
             <i data-lucide="home" class="w-5 h-5"></i>
             <span>Dashboard</span>
         </a>
 
+        <!-- Menu Data Calon Penerima -->
         <a href="/datapenerima" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
             <i data-lucide="users" class="w-5 h-5"></i>
             <span>Data Calon Penerima</span>
         </a>
 
-        <!-- Dropdown Kriteria & Bobot -->
+        <!-- Menu Kriteria & Bobot dengan Dropdown -->
         <div x-data="{ open: false }">
-            <button @click="open = !open" class="w-full flex items-center justify-between py-2 px-3 rounded hover:bg-blue-700">
+            <!-- Tombol Panah untuk membuka/dropdown -->
+            <button @click.prevent="open = !open" class="w-full flex items-center justify-between py-2 px-3 rounded hover:bg-blue-700">
                 <div class="flex items-center space-x-3">
                     <i data-lucide="layers" class="w-5 h-5"></i>
                     <span>Kriteria & Bobot</span>
@@ -26,21 +29,28 @@
                 <i data-lucide="chevron-down" :class="{ 'rotate-180': open }" class="w-4 h-4 transition-transform"></i>
             </button>
 
-            <div x-show="open" class="ml-6 mt-2 space-y-2" x-cloak>
-                <a href="/subkriteria" class="block py-2 px-2 rounded hover:bg-blue-700">Sub Kriteria</a>
+            <!-- Dropdown Submenu -->
+            <div x-show="open" x-transition class="ml-6 mt-2 space-y-2" x-cloak>
+                <a href="{{ route('kriteria.index') }}" class="block py-2 px-2 rounded hover:bg-blue-700">Kriteria</a>
+            </div>
+            <div x-show="open" x-transition class="ml-6 mt-2 space-y-2" x-cloak>
+                <a href="{{ route('subkriteria.index') }}" class="block py-2 px-2 rounded hover:bg-blue-700">Sub Kriteria</a>
             </div>
         </div>
 
+        <!-- Menu Perhitungan SMART -->
         <a href="/perhitungan" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
             <i data-lucide="calculator" class="w-5 h-5"></i>
             <span>Perhitungan SMART</span>
         </a>
 
+        <!-- Menu Hasil Seleksi -->
         <a href="/hasil" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
             <i data-lucide="check-circle" class="w-5 h-5"></i>
             <span>Hasil Seleksi</span>
         </a>
 
+        <!-- Menu Manajemen Admin -->
         <a href="/admin" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
             <i data-lucide="user-cog" class="w-5 h-5"></i>
             <span>Manajemen Admin</span>

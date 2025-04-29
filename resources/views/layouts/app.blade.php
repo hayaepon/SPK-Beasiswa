@@ -40,7 +40,7 @@
         </div>
 
         <!-- Fixed White Content -->
-        <div class="flex-1 bg-white m-6 shadow-md overflow-hidden flex flex-col">
+        <div class="flex-3 bg-white m-4 shadow-md overflow-hidden flex flex-col">
 
             <!-- Scrollable Inner Content -->
             <div class="flex-1 overflow-y-auto p-6">
