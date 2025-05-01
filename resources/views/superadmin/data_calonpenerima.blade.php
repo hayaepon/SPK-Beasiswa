@@ -30,8 +30,8 @@
                     <label for="pilihan_beasiswa" class="text-sm font-medium text-gray-700">Pilihan Beasiswa</label>
                     <select id="pilihan_beasiswa" name="pilihan_beasiswa" class="w-full p-3 border rounded-lg shadow-sm" required>
                         <option value="">Pilih Beasiswa</option>
-                        <option value="beasiswa1">Beasiswa 1</option>
-                        <option value="beasiswa2">Beasiswa 2</option>
+                        <option value="KIP-K">KIP-K</option>
+                        <option value="Tahfidz">Tahfidz</option>
                     </select>
                 </div>
             </div>

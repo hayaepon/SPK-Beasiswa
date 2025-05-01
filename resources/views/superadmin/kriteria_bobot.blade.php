@@ -15,7 +15,7 @@
             <label for="beasiswa" class="block text-gray-700 font-semibold">Beasiswa</label>
             <select id="beasiswa" name="beasiswa" class="w-full p-3 border rounded-lg shadow-sm">
                 <option value="KIP-K">KIP-K</option>
-                <option value="Tahfiz">Tahfiz</option>
+                <option value="Tahfidz">Tahfidz</option>
             </select>
         </div>
 
