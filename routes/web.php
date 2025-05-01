@@ -5,6 +5,7 @@ use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\SubKriteriaController;
 use App\Http\Controllers\CalonPenerimaController;
 use App\Http\Controllers\PerhitunganSMARTController;
+use App\Http\Controllers\HasilSeleksiController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk halaman utama
@@ -63,6 +64,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Rute untuk tombol Hitung
     Route::post('/perhitungan-smart/hitung', [PerhitunganSMARTController::class, 'hitung'])->name('perhitungan-smart.hitung');
 });
+
+//route hasil seleksi
+Route::get('/hasil-seleksi', [HasilSeleksiController::class, 'index'])->name('hasil-seleksi');
+
 
 // Route untuk profile
 Route::middleware('auth')->group(function () {

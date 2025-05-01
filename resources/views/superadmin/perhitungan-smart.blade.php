@@ -3,9 +3,9 @@
 @section('title', 'Perhitungan SMART')
 
 @section('content')
-<div class="container mx-auto px-4 py-6">
+<div class="container mx-auto px-4 py-6 h-screen">
     <!-- Form untuk Tombol Hitung -->
-    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+    <div class="bg-white p-6 rounded-lg shadow-md mb-8 h-full">
         <h2 class="text-2xl font-bold mb-4">Tabel Perhitungan SMART</h2>
 
         <!-- Tombol Hitung -->
@@ -17,7 +17,7 @@
         </form>
 
         <!-- Tabel Data Calon Penerima dengan Scroll Horizontal -->
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto h-96">
             <table class="min-w-full table-auto border-collapse">
                 <thead>
                     <tr class="bg-gray-100">
