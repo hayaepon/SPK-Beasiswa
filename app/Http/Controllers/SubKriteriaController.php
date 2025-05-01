@@ -10,7 +10,7 @@ class SubKriteriaController extends Controller
     public function index()
     {
         $subKriterias = SubKriteria::all();
-        return view('subkriteria.index', compact('subKriterias'));
+        return view('superadmin.subkriteria.index', compact('subKriterias'));
     }
 
     // Menampilkan form untuk menambah subkriteria

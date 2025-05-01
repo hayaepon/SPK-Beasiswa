@@ -45,7 +45,7 @@
         </a>
 
         <!-- Menu Hasil Seleksi -->
-        <a href="/hasil" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
+        <a href="/hasil-seleksi" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
             <i data-lucide="check-circle" class="w-5 h-5"></i>
             <span>Hasil Seleksi</span>
         </a>
