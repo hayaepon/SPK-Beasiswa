@@ -1,109 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login Super Admin</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            background-color: #cfd6e0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+<x-guest-layout>
+    <div class="min-h-screen flex items-center justify-center bg-gray-200">
+        <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm">
+            <div class="flex justify-center mb-4">
+                <img src="{{ asset('img/logo.png') }}" alt="STMIK Antar Bangsa" class="h-12">
+            </div>
+            <h2 class="text-center text-2xl font-bold mb-6">Sign in</h2>
 
-        .login-box {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+            <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        .login-box img {
-            width: 100px;
-            margin-bottom: 10px;
-        }
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-        .login-box h2 {
-            margin-bottom: 20px;
-        }
+                <div class="mb-4">
+                    <input id="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" type="email" name="email" placeholder="Username" :value="old('email')" required autofocus autocomplete="username" />
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
 
-        .login-box input[type="text"],
-        .login-box input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
+                <div class="mb-4">
+                    <input id="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" type="password" name="password" placeholder="Password" required autocomplete="current-password" />
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
 
-        .login-box button {
-            width: 100%;
-            background-color: #0d47a1;
-            color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-        }
+                <div class="flex items-center justify-between mb-4">
+                    <label for="remember_me" class="flex items-center">
+                        <input id="remember_me" type="checkbox" class="mr-2 rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500" name="remember">
+                        <span class="text-sm text-gray-600">Remember me</span>
+                    </label>
 
-        .top-bar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: white;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
+                    @if (Route::has('password.request'))
+                        <a class="text-sm text-blue-600 hover:underline" href="{{ route('password.request') }}">
+                            Forgot?
+                        </a>
+                    @endif
+                </div>
 
-        .top-bar span {
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        .top-bar i {
-            font-size: 20px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="top-bar">
-        <span id="role">Admin</span>
-        <i class="fas fa-user-circle" onclick="toggleRole()"></i>
-    </div>
-
-    <form method="POST" action="{{ url('/login') }}">
-        @csrf
-        <div class="login-box">
-            <img src="{{ asset('logo.png') }}" alt="Logo STMIK">
-            <h2>Sign in</h2>
-
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-
-            <button type="submit">Sign in</button>
-
-            @if(session('error'))
-                <p style="color:red; margin-top:10px;">{{ session('error') }}</p>
-            @endif
+                <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded">
+                    Sign in
+                </button>
+            </form>
         </div>
-    </form>
-
-    <script>
-        function toggleRole() {
-            const roleElement = document.getElementById('role');
-            roleElement.textContent = roleElement.textContent === 'Admin' ? 'Super Admin' : 'Admin';
-        }
-    </script>
-
-</body>
-</html>
+    </div>
+</x-guest-layout>

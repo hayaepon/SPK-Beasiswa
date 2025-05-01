@@ -59,9 +59,12 @@
 
     <!-- Tombol Logout -->
     <div class="px-4 py-6 flex justify-center">
-        <a href="/logout" class="flex items-center space-x-2 text-white px-4 py-2 rounded">
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="flex items-center space-x-2 text-white px-4 py-2 rounded">
             <i data-lucide="log-out" class="w-5 h-5 transform scale-x-[-1]"></i>
             <span>Keluar</span>
-        </a>
-    </div>
+        </button>
+    </form>
+</div>
 </aside>

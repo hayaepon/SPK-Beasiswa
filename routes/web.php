@@ -22,13 +22,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Rute untuk dashboard Super Admin
     Route::get('/dashboard-superadmin', function () {
-        return view('dashboard-superadmin');
-    })->middleware('role:superadmin'); // Menambahkan middleware role jika diperlukan
+        if (Auth::check() && Auth::user()->role === 'superadmin') {
+            return view('dashboard-superadmin');
+        }
+        abort(403); // atau redirect('/login') jika ingin arahkan ulang
+    })->middleware(['auth']);
+    
 
     // Rute untuk dashboard Admin
     Route::get('/dashboard-admin', function () {
-        return view('dashboard-admin');
-    })->middleware('role:admin'); // Menambahkan middleware role jika diperlukan
+        if (Auth::check() && Auth::user()->role === 'admin') {
+            return view('dashboard-admin');
+        }
+        abort(403);
+    })->middleware(['auth']);
+    
 
     // Route untuk Kriteria & Bobot
     Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria.index');
