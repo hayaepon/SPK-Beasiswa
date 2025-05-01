@@ -6,6 +6,7 @@ use App\Http\Controllers\SubKriteriaController;
 use App\Http\Controllers\CalonPenerimaController;
 use App\Http\Controllers\PerhitunganSMARTController;
 use App\Http\Controllers\HasilSeleksiController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk halaman utama
@@ -76,6 +77,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 //route hasil seleksi
 Route::get('/hasil-seleksi', [HasilSeleksiController::class, 'index'])->name('hasil-seleksi');
 
+//Route to show the admin management page
+Route::get('/manajemen_admin', [AdminController::class, 'index'])->name('admin.index');
+
+// Route to handle the form submission for adding an admin
+Route::post('/manajemen_admin', [AdminController::class, 'store'])->name('admin.store');
 
 // Route untuk profile
 Route::middleware('auth')->group(function () {

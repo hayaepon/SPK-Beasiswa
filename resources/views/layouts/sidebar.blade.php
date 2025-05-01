@@ -51,7 +51,7 @@
         </a>
 
         <!-- Menu Manajemen Admin -->
-        <a href="/admin" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
+        <a href="/manajemen_admin" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
             <i data-lucide="user-cog" class="w-5 h-5"></i>
             <span>Manajemen Admin</span>
         </a>
