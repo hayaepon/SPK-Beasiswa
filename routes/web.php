@@ -55,6 +55,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/subkriteria/edit/{id}', [SubKriteriaController::class, 'edit'])->name('subkriteria.edit');
     Route::put('/subkriteria/update/{id}', [SubKriteriaController::class, 'update'])->name('subkriteria.update');
     Route::delete('/subkriteria/destroy/{id}', [SubKriteriaController::class, 'destroy'])->name('subkriteria.destroy');
+    
+    // Route to fetch Kriteria by Beasiswa (AJAX)
+    Route::get('/subkriteria/kriteria/{beasiswa}', [SubKriteriaController::class, 'getKriteriaByBeasiswa']);
 });
 
 // Route untuk Data Calon Penerima
@@ -66,7 +69,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/calon-penerima/{id}', [CalonPenerimaController::class, 'destroy'])->name('calon-penerima.destroy');
 });
 
-//Route perhitungan smart
+// Route perhitungan smart
 Route::middleware(['auth', 'verified'])->group(function () {
     // Rute untuk halaman Perhitungan SMART untuk Super Admin
     Route::get('/perhitungan-smart', [PerhitunganSMARTController::class, 'index'])->name('perhitungan-smart.index');
@@ -75,13 +78,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/perhitungan-smart/hitung', [PerhitunganSMARTController::class, 'hitung'])->name('perhitungan-smart.hitung');
 });
 
-//route hasil seleksi
+// Route hasil seleksi
 Route::get('/hasil-seleksi', [HasilSeleksiController::class, 'index'])->name('hasil-seleksi');
 
-//Route to show the admin management page
+// Route untuk manajemen admin
 Route::get('/manajemen_admin', [AdminController::class, 'index'])->name('admin.index');
-
-// Route to handle the form submission for adding an admin
 Route::post('/manajemen_admin', [AdminController::class, 'store'])->name('admin.store');
 
 // Route untuk profile

@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\SubKriteria;
+use App\Models\Kriteria;
 use Illuminate\Http\Request;
 
 class SubKriteriaController extends Controller
@@ -15,10 +17,10 @@ class SubKriteriaController extends Controller
 
     // Menampilkan form untuk menambah subkriteria
     public function create()
-    {
-        return view('subkriteria.create');
-    }
-
+{
+    $kriterias = Kriteria::all(); // Menampilkan semua kriteria yang ada
+    return view('superadmin.subkriteria.create', compact('kriterias'));  // Mengirim data kriteria ke view
+}
     // Menyimpan data subkriteria
     public function store(Request $request)
     {
@@ -36,7 +38,8 @@ class SubKriteriaController extends Controller
     public function edit($id)
     {
         $subKriteria = SubKriteria::findOrFail($id);
-        return view('subkriteria.edit', compact('subKriteria'));
+        $kriterias = Kriteria::all();  // Fetch all Kriteria for the dropdown
+        return view('superadmin.subkriteria.edit', compact('subKriteria', 'kriterias'));  // Pass both subKriteria and kriterias
     }
 
     // Memperbarui data subkriteria
@@ -59,5 +62,12 @@ class SubKriteriaController extends Controller
         $subKriteria = SubKriteria::findOrFail($id);
         $subKriteria->delete();
         return redirect()->route('subkriteria.index');
+    }
+
+    // Fetch Kriteria based on selected Beasiswa (AJAX)
+    public function getKriteriaByBeasiswa($beasiswa)
+    {
+        $kriterias = Kriteria::where('beasiswa', $beasiswa)->get();  // Ambil kriteria berdasarkan beasiswa
+        return response()->json($kriterias);  // Kembalikan data kriteria dalam format JSON
     }
 }

@@ -33,9 +33,9 @@
             <input type="number" id="bobot" name="bobot" class="w-full p-3 border rounded-lg shadow-sm" value="{{ old('bobot', $kriteria->bobot) }}" required>
         </div>
 
-        <div class="flex justify-between">
+        <div class="flex space-x-4 justify-start">
             <button type="submit" class="bg-blue-600 text-white py-2 px-6 rounded-lg shadow-md">Update</button>
-            <a href="{{ route('kriteria.index') }}" class="bg-gray-600 text-white py-2 px-6 rounded-lg shadow-md">Batal</a>
+            <a href="{{ route('kriteria.index') }}" class="bg-yellow-400 text-white py-2 px-6 rounded-lg shadow-md">Batal</a>
         </div>
     </form>
 </div>
