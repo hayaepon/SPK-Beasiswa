@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Mengubah warna teks placeholder pada select */
+select option:first-child {
+    color: gray; 
+}
+
+/* Mengubah warna teks di dalam select setelah dipilih */
+select {
+    color: gray; /* Warna teks setelah memilih opsi */
+}
+
+/* Menambahkan warna placeholder untuk input di dalam select */
+select:invalid {
+    color: gray;  /* Placeholder menjadi abu-abu */
+}
+
+
+

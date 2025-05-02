@@ -62,6 +62,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/data-calon-penerima', [CalonPenerimaController::class, 'index'])->name('data-calon-penerima');
     Route::post('/calon-penerima', [CalonPenerimaController::class, 'store'])->name('calon-penerima.store');
     Route::get('/calon-penerima/edit/{id}', [CalonPenerimaController::class, 'edit'])->name('calon-penerima.edit');
+    Route::put('/calon-penerima/update/{id}', [CalonPenerimaController::class, 'update'])->name('calon-penerima.update');
     Route::delete('/calon-penerima/{id}', [CalonPenerimaController::class, 'destroy'])->name('calon-penerima.destroy');
 });
 

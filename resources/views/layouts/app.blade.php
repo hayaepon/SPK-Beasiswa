@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <style>
         html, body {
@@ -40,7 +41,7 @@
         </div>
 
         <!-- Fixed White Content -->
-        <div class="bg-white m-4 shadow-md overflow-hidden flex flex-col min-h-screen">
+        <div class="bg-white m-4 shadow-md overflow-auto flex flex-col ">
 
             <!-- Scrollable Inner Content -->
             <div class="flex-1 overflow-y-auto p-6">
