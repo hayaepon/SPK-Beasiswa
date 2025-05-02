@@ -3,7 +3,7 @@
 @section('title', 'Sub Kriteria')
 
 @section('content')
-<div class="container mx-auto px-4 py-6">
+<div class="container mx-auto px-4 py-6 h-screen">
     <!-- Form untuk menambah Sub Kriteria -->
     <div class="bg-white p-6 rounded-lg shadow-md mb-6">
         <h2 class="font-bold text-2xl mb-4">Tambah Sub Kriteria</h2>

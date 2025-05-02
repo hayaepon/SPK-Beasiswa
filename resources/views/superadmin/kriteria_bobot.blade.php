@@ -3,6 +3,7 @@
 @section('title', 'Kriteria & Bobot')
 
 @section('content')
+<div class="container mx-auto px-4 py-6 h-screen">
 <!-- Tambah Kriteria -->
 <div class="bg-white p-6 rounded-lg shadow-md mb-8">
     <h2 class="text-2xl font-bold mb-4">Tambah Kriteria & Bobot</h2>

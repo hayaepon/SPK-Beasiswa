@@ -34,13 +34,13 @@
         </div>
 
         <!-- Header Title -->
-        <div class="bg-[#C7CEDB] px-6 py-4 flex items-center space-x-2 sticky top-16 z-10">
+        <div class="bg-[#C7CEDB] px-6 py-2 flex items-center space-x-2 sticky top-16 z-10">
             <i data-lucide="home" class="w-7 h-7 text-black-700"></i>
             <h1 class="text-2xl font-bold text-black-700">@yield('title')</h1>
         </div>
 
         <!-- Fixed White Content -->
-        <div class="flex-3 bg-white m-4 shadow-md overflow-hidden flex flex-col">
+        <div class="bg-white m-4 shadow-md overflow-hidden flex flex-col min-h-screen">
 
             <!-- Scrollable Inner Content -->
             <div class="flex-1 overflow-y-auto p-6">
