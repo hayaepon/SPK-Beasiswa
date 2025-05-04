@@ -6,12 +6,12 @@
 <div class="container mx-auto px-4 py-6 h-screen">
     <!-- Form untuk menambah Sub Kriteria -->
     <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-        <h2 class="font-semibold text-2xl mb-4">Tambah Sub Kriteria</h2>
+        <h2 class="font-semibold text-2xl mb-4 text-[22px]">Tambah Sub Kriteria</h2>
         <form action="{{ route('subkriteria.store') }}" method="POST">
             @csrf
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="mb-4">
-                    <label for="beasiswa" class="block text-sm font-semibold">Beasiswa</label>
+                    <label for="beasiswa" class="block text-sm text-black-700 text-[16px] font-medium">Beasiswa</label>
                     <select id="beasiswa" name="beasiswa" class="w-full p-3 border rounded-lg shadow-sm">
                         <option value="KIP-K">KIP-K</option>
                         <option value="Tahfiz">Tahfiz</option>
@@ -19,19 +19,19 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="kriteria" class="block text-sm font-semibold">Kriteria</label>
+                    <label for="kriteria" class="block text-sm font-medium text-black-700 text-[16px]">Kriteria</label>
                     <input type="text" id="kriteria" name="kriteria" class="w-full p-3 border rounded-lg shadow-sm" required>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="mb-4">
-                    <label for="sub_kriteria" class="block text-sm font-semibold">Sub Kriteria</label>
+                    <label for="sub_kriteria" class="block text-sm font-medium text-black-700 text-[16px]">Sub Kriteria</label>
                     <input type="text" id="sub_kriteria" name="sub_kriteria" class="w-full p-3 border rounded-lg shadow-sm" required>
                 </div>
 
                 <div class="mb-4">
-                    <label for="nilai" class="block text-sm font-semibold">Nilai</label>
+                    <label for="nilai" class="block text-sm font-medium text-black-700 text-[16px]">Nilai</label>
                     <input type="number" id="nilai" name="nilai" class="w-full p-3 border rounded-lg shadow-sm" required>
                 </div>
             </div>

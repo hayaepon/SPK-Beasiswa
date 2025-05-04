@@ -45,7 +45,7 @@
         </div>
 
         <!-- Tabel Hasil Seleksi dengan Scroll -->
-        <div class="overflow-x-auto mt-2">
+        <div class="overflow-x-auto mt-4">
             <div class="flex flex-col max-h-[400px] overflow-y-auto">
                 <table class="min-w-full table-auto border-collapse">
                     <thead>

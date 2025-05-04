@@ -5,8 +5,9 @@
 @section('content')
 
     <!-- Form Edit Data Calon Penerima -->
+    <div class="container mx-auto px-4 py-6 h-screen">
     <div class="bg-white p-6 rounded-lg mb-6">
-        <h2 class="text-2xl font-medium mb-8 text-[22px]">Form Edit Calon Penerima</h2>
+        <h2 class="text-2xl font-semibold mb-8 text-[22px]">Form Edit Calon Penerima</h2>
 
         <form action="{{ route('calon-penerima.update', $data->id) }}" method="POST" class="space-y-4">
             @csrf

@@ -7,14 +7,14 @@
 
     <!-- Tambah Kriteria -->
     <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-        <h2 class="text-2xl font-semibold mb-4">Tambah Kriteria & Bobot</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-[22px]">Tambah Kriteria & Bobot</h2>
 
         <form action="{{ route('kriteria.store') }}" method="POST">
             @csrf
 
             <!-- Beasiswa -->
             <div class="mb-4">
-                <label for="beasiswa" class="block text-gray-700 font-semibold">Beasiswa</label>
+                <label for="beasiswa" class="block text-black-700 text-[16px] font-medium">Beasiswa</label>
                 <select id="beasiswa" name="beasiswa" class="w-full p-3 border rounded-lg shadow-sm">
                     <option value="KIP-K">KIP-K</option>
                     <option value="Tahfidz">Tahfidz</option>
@@ -23,13 +23,13 @@
 
             <!-- Kriteria -->
             <div class="mb-4">
-                <label for="kriteria" class="block text-gray-700 font-semibold">Kriteria</label>
+                <label for="kriteria" class="block text-black-700 text-[16px] font-medium">Kriteria</label>
                 <input type="text" id="kriteria" name="kriteria" class="w-full p-3 border rounded-lg shadow-sm" required>
             </div>
 
             <!-- Bobot -->
             <div class="mb-4">
-                <label for="bobot" class="block text-gray-700 font-semibold">Bobot Kriteria (%)</label>
+                <label for="bobot" class="block text-black-700 text-[16px] font-medium">Bobot Kriteria (%)</label>
                 <input type="number" id="bobot" name="bobot" class="w-full p-3 border rounded-lg shadow-sm" required>
             </div>
 

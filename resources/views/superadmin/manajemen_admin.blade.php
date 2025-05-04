@@ -5,7 +5,7 @@
 @section('content')
 <div class="container mx-auto py-4 px-6 h-screen">
     <div class="flex justify-between items-center mb-4">
-        <h4 class="text-2xl font-semibold mb-4">Daftar Data User</h4>
+        <h4 class="text-2xl font-semibold mb-4 text-[22px]">Daftar Data User</h4>
         <!-- Button to trigger modal for adding a new admin -->
         <button id="addAdminBtn" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-sm hover:bg-green-600">+ Tambah</button>
     </div>
