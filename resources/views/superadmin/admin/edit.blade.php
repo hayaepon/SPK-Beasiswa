@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Admin')
+@section('title', 'Edit Admin')
 
 @section('content')
 <div class="container mx-auto py-4 px-6">
-    <h4 class="text-2xl font-semibold mb-4">Input Data Admin</h4>
+    <h4 class="text-2xl font-semibold mb-4">Edit Admin</h4>
 
     <!-- Menampilkan Pesan Error jika ada -->
     @if($errors->any())
@@ -17,14 +17,15 @@
         </div>
     @endif
 
-    <!-- Form untuk tambah admin -->
-    <form action="{{ route('admin.store') }}" method="POST">
+    <!-- Form untuk edit admin -->
+    <form action="{{ route('admin.update', $admin->id) }}" method="POST">
         @csrf
+        @method('PUT') <!-- Jangan lupa menggunakan PUT untuk update -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Nama -->
             <div class="mb-4">
                 <label for="nama" class="block text-sm font-medium text-gray-700">Nama:</label>
-                <input type="text" id="nama" name="nama" class="w-full p-2 border border-gray-300 rounded-lg @error('nama') border-red-500 @enderror" value="{{ old('nama') }}" required>
+                <input type="text" id="nama" name="nama" class="w-full p-2 border border-gray-300 rounded-lg @error('nama') border-red-500 @enderror" value="{{ old('nama', $admin->nama) }}" required>
                 @error('nama')
                     <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                 @enderror
@@ -33,7 +34,7 @@
             <!-- Email -->
             <div class="mb-4">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
-                <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded-lg @error('email') border-red-500 @enderror" value="{{ old('email') }}" required>
+                <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded-lg @error('email') border-red-500 @enderror" value="{{ old('email', $admin->email) }}" required>
                 @error('email')
                     <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                 @enderror
@@ -42,7 +43,7 @@
             <!-- Username -->
             <div class="mb-4">
                 <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
-                <input type="text" id="username" name="username" class="w-full p-2 border border-gray-300 rounded-lg @error('username') border-red-500 @enderror" value="{{ old('username') }}" required>
+                <input type="text" id="username" name="username" class="w-full p-2 border border-gray-300 rounded-lg @error('username') border-red-500 @enderror" value="{{ old('username', $admin->username) }}" required>
                 @error('username')
                     <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                 @enderror
@@ -50,8 +51,8 @@
 
             <!-- Password -->
             <div class="mb-4">
-                <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
-                <input type="password" id="password" name="password" class="w-full p-2 border border-gray-300 rounded-lg @error('password') border-red-500 @enderror" required>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password (Kosongkan jika tidak ingin mengubah):</label>
+                <input type="password" id="password" name="password" class="w-full p-2 border border-gray-300 rounded-lg @error('password') border-red-500 @enderror">
                 @error('password')
                     <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                 @enderror
@@ -61,8 +62,8 @@
             <div class="mb-4">
                 <label for="role" class="block text-sm font-medium text-gray-700">Role:</label>
                 <select id="role" name="role" class="w-full p-2 border border-gray-300 rounded-lg @error('role') border-red-500 @enderror">
-                    <option value="SuperAdmin" {{ old('role') == 'SuperAdmin' ? 'selected' : '' }}>SuperAdmin</option>
-                    <option value="Admin" {{ old('role') == 'Admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="SuperAdmin" {{ old('role', $admin->role) == 'SuperAdmin' ? 'selected' : '' }}>SuperAdmin</option>
+                    <option value="Admin" {{ old('role', $admin->role) == 'Admin' ? 'selected' : '' }}>Admin</option>
                 </select>
                 @error('role')
                     <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
@@ -73,13 +74,14 @@
             <div class="mb-4">
                 <label for="status" class="block text-sm font-medium text-gray-700">Status:</label>
                 <select id="status" name="status" class="w-full p-2 border border-gray-300 rounded-lg @error('status') border-red-500 @enderror">
-                    <option value="Aktif" {{ old('status') == 'Aktif' ? 'selected' : '' }}>Aktif</option>
-                    <option value="Non-Aktif" {{ old('status') == 'Non-Aktif' ? 'selected' : '' }}>Non-Aktif</option>
+                    <option value="Aktif" {{ old('status', $admin->status) == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                    <option value="Non-Aktif" {{ old('status', $admin->status) == 'Non-Aktif' ? 'selected' : '' }}>Non-Aktif</option>
                 </select>
                 @error('status')
                     <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                 @enderror
             </div>
+
         </div>
 
         <div class="flex space-x-4 justify-start">

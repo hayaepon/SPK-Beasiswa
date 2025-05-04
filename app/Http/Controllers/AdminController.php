@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Admin; // Pastikan model Admin sudah ada
+use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash; // Untuk enkripsi password
 
 class AdminController extends Controller
 {
@@ -33,6 +33,7 @@ class AdminController extends Controller
             'username' => 'required|string|max:255',
             'role' => 'required|string',
             'status' => 'required|string',
+            'password' => 'required|string|min:8', // Validasi password
         ]);
 
         // Membuat objek admin baru
@@ -42,6 +43,7 @@ class AdminController extends Controller
             'username' => $request->username,
             'role' => $request->role,
             'status' => $request->status,
+            'password' => Hash::make($request->password), // Enkripsi password
         ]);
 
         // Menyimpan admin ke dalam database
@@ -51,36 +53,54 @@ class AdminController extends Controller
         return redirect()->route('admin.index')->with('success', 'Admin baru berhasil ditambahkan!');
     }
 
-    // Method untuk menampilkan form edit admin (optional, jika diperlukan)
+    // Method untuk menampilkan form edit admin
     public function edit($id)
     {
-        $admin = Admin::findOrFail($id); // Mengambil data admin berdasarkan ID
-        return view('superadmin.admin.edit', compact('admin')); // Menampilkan form edit
+        // Mengambil data admin berdasarkan ID
+        $admin = Admin::findOrFail($id);
+
+        // Menampilkan form edit dengan data admin
+        return view('superadmin.admin.edit', compact('admin'));
     }
 
     // Method untuk mengupdate data admin
     public function update(Request $request, $id)
     {
+        // Validasi data yang dikirim dari form
         $request->validate([
             'nama' => 'required|string|max:255',
             'email' => 'required|email|unique:admins,email,' . $id,
             'username' => 'required|string|max:255',
             'role' => 'required|string',
             'status' => 'required|string',
+            'password' => 'nullable|string|min:8', // Password boleh kosong saat update
         ]);
 
-        $admin = Admin::findOrFail($id); // Menemukan admin berdasarkan ID
-        $admin->update($request->all()); // Mengupdate data admin
+        // Menemukan admin berdasarkan ID
+        $admin = Admin::findOrFail($id);
 
+        // Jika ada password baru, maka hash dan simpan
+        if ($request->has('password') && $request->password) {
+            $admin->password = Hash::make($request->password); // Enkripsi password
+        }
+
+        // Mengupdate data admin
+        $admin->update($request->except('password')); // Jangan update password kalau kosong
+
+        // Redirect ke halaman daftar admin dengan pesan sukses
         return redirect()->route('admin.index')->with('success', 'Admin berhasil diperbarui!');
     }
 
     // Method untuk menghapus admin
     public function destroy($id)
     {
-        $admin = Admin::findOrFail($id); // Menemukan admin berdasarkan ID
-        $admin->delete(); // Menghapus admin
+        // Menemukan admin berdasarkan ID
+        $admin = Admin::findOrFail($id);
 
+        // Menghapus admin
+        $admin->delete();
+
+        // Redirect ke halaman daftar admin dengan pesan sukses
         return redirect()->route('admin.index')->with('success', 'Admin berhasil dihapus!');
     }
 }
