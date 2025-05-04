@@ -6,7 +6,7 @@
 <div class="container mx-auto px-4 py-6 h-screen">
     <!-- Form untuk menambah Sub Kriteria -->
     <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-        <h2 class="font-bold text-2xl mb-4">Tambah Sub Kriteria</h2>
+        <h2 class="font-semibold text-2xl mb-4">Tambah Sub Kriteria</h2>
         <form action="{{ route('subkriteria.store') }}" method="POST">
             @csrf
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -47,7 +47,8 @@
 
     <!-- Tabel Sub Kriteria -->
     <div class="bg-white p-6 rounded-lg shadow-md">
-        <h2 class="font-bold text-2xl mb-4">Data Sub Kriteria</h2>
+        <h2 class="font-semibold text-2xl mb-4">Data Sub Kriteria</h2>
+        <hr class="border-t-2 border-gray-300 mb-4 w-full">
         <table class="min-w-full mt-6 border-collapse">
             <thead>
                 <tr class="bg-blue-800 text-white font-medium">

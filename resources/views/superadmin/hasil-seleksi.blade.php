@@ -6,7 +6,7 @@
 <div class="container mx-auto px-4 py-6 h-screen">
     <!-- Hasil Seleksi -->
     <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-        <h2 class="text-2xl font-bold mb-4">Hasil Seleksi</h2>
+        <h2 class="text-2xl font-semibold mb-4">Hasil Seleksi</h2>
 
         <!-- Tabel Hasil Seleksi dengan Scroll -->
         <div class="overflow-x-auto">
