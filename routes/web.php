@@ -80,6 +80,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Route hasil seleksi
 Route::get('/hasil-seleksi', [HasilSeleksiController::class, 'index'])->name('hasil-seleksi');
+Route::get('/hasil-seleksi/export', [HasilSeleksiController::class, 'export'])->name('hasil-seleksi.export');
 
 // Route untuk manajemen admin
 Route::get('/manajemen_admin', [AdminController::class, 'index'])->name('admin.index');
