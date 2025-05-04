@@ -2,25 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin; // Make sure to import the Admin model
+use App\Models\Admin; // Pastikan model Admin sudah ada
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    // Method to show the "Manajemen Admin" page
+    // Method untuk menampilkan daftar admin
     public function index()
     {
-        // Fetch all admins from the database
+        // Mengambil data semua admin dari database
         $admins = Admin::all();
 
-        // Return the view with the admins data
+        // Menampilkan view dengan data admin
         return view('superadmin.manajemen_admin', compact('admins'));
     }
 
-    // Method to handle storing new admin data
+    // Method untuk menampilkan form tambah admin
+    public function create()
+    {
+        return view('superadmin.admin.create'); // Mengarahkan ke form create
+    }
+
+    // Method untuk menyimpan data admin baru
     public function store(Request $request)
     {
-        // Validate incoming request
+        // Validasi data yang dikirim dari form
         $request->validate([
             'nama' => 'required|string|max:255',
             'email' => 'required|email|unique:admins,email',
@@ -29,7 +35,7 @@ class AdminController extends Controller
             'status' => 'required|string',
         ]);
 
-        // Create a new admin entry in the database
+        // Membuat objek admin baru
         $admin = new Admin([
             'nama' => $request->nama,
             'email' => $request->email,
@@ -38,10 +44,43 @@ class AdminController extends Controller
             'status' => $request->status,
         ]);
 
-        // Save the new admin
+        // Menyimpan admin ke dalam database
         $admin->save();
 
-        // Redirect back to the admin management page with a success message
-        return redirect()->route('admin.index')->with('success', 'Admin added successfully!');
+        // Redirect ke halaman daftar admin dengan pesan sukses
+        return redirect()->route('admin.index')->with('success', 'Admin baru berhasil ditambahkan!');
+    }
+
+    // Method untuk menampilkan form edit admin (optional, jika diperlukan)
+    public function edit($id)
+    {
+        $admin = Admin::findOrFail($id); // Mengambil data admin berdasarkan ID
+        return view('superadmin.admin.edit', compact('admin')); // Menampilkan form edit
+    }
+
+    // Method untuk mengupdate data admin
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|unique:admins,email,' . $id,
+            'username' => 'required|string|max:255',
+            'role' => 'required|string',
+            'status' => 'required|string',
+        ]);
+
+        $admin = Admin::findOrFail($id); // Menemukan admin berdasarkan ID
+        $admin->update($request->all()); // Mengupdate data admin
+
+        return redirect()->route('admin.index')->with('success', 'Admin berhasil diperbarui!');
+    }
+
+    // Method untuk menghapus admin
+    public function destroy($id)
+    {
+        $admin = Admin::findOrFail($id); // Menemukan admin berdasarkan ID
+        $admin->delete(); // Menghapus admin
+
+        return redirect()->route('admin.index')->with('success', 'Admin berhasil dihapus!');
     }
 }

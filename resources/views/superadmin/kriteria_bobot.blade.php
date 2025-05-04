@@ -35,7 +35,7 @@
 
             <div class="flex space-x-4 justify-start">
                 <button type="submit" class="bg-green-600 text-white py-2 px-6 rounded-lg shadow-md">Simpan</button>
-                <a href="{{ route('kriteria.index') }}" class="bg-yellow-400 text-white py-2 px-6 rounded-lg shadow-md">Batal</a>
+                <a href="{{ route('kriteria.index') }}" class="bg-yellow-400 text-white py-2 px-8 rounded-lg shadow-md">Batal</a>
             </div>
 
         </form>

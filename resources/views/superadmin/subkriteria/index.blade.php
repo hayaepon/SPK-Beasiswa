@@ -38,7 +38,7 @@
 
             <div class="flex space-x-4 justify-start">
                 <button type="submit" class="bg-green-500 text-white py-2 px-6 rounded-lg">Simpan</button>
-                <a href="{{ route('subkriteria.index') }}" class="bg-yellow-400 text-white py-2 px-6 rounded-lg">Batal</a>
+                <a href="{{ route('subkriteria.index') }}" class="bg-yellow-400 text-white py-2 px-8 rounded-lg">Batal</a>
             </div>
         </form>
     </div>

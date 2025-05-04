@@ -7,7 +7,9 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <!-- Mengimpor Lucide CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <style>
@@ -52,8 +54,9 @@
 
     </div>
 
+    <!-- Tambahkan script untuk Lucide -->
     <script>
-        lucide.createIcons();
+        lucide.createIcons(); // Menjalankan createIcons untuk menginisialisasi ikon
     </script>
 
 </body>

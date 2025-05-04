@@ -86,6 +86,25 @@ Route::get('/hasil-seleksi/export', [HasilSeleksiController::class, 'export'])->
 Route::get('/manajemen_admin', [AdminController::class, 'index'])->name('admin.index');
 Route::post('/manajemen_admin', [AdminController::class, 'store'])->name('admin.store');
 
+// Menampilkan daftar admin
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
+// Menampilkan form untuk tambah admin
+Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+
+// Menyimpan data admin baru
+Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
+
+// Menampilkan form edit admin
+Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+
+// Mengupdate data admin
+Route::put('/admin/{id}', [AdminController::class, 'update'])->name('admin.update');
+
+// Menghapus admin
+Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+
+
 // Route untuk profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

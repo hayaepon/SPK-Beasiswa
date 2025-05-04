@@ -7,5 +7,6 @@ window.Alpine = Alpine;
 Alpine.start();
 
 import { createIcons } from 'lucide';
+lucide.createIcons({ icons });
 
 createIcons();

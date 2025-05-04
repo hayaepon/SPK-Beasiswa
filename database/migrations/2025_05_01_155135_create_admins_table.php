@@ -12,25 +12,15 @@ class CreateAdminsTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('email')->unique();
-            $table->string('username')->unique();
-            $table->string('role');
-            $table->string('status');
-            $table->timestamps();
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('admins');
-    }
+{
+    Schema::create('admins', function (Blueprint $table) {
+        $table->id();
+        $table->string('nama');
+        $table->string('email')->unique();
+        $table->string('username');
+        $table->enum('role', ['SuperAdmin', 'Admin']);
+        $table->enum('status', ['Aktif', 'Non-Aktif']);
+        $table->timestamps();
+    });
+}
 }
