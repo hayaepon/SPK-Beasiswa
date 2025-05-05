@@ -18,7 +18,7 @@
     @endif
 
     <!-- Form untuk tambah admin -->
-    <form action="{{ route('admin.store') }}" method="POST">
+    <form action="{{ route('admin.store') }}" method="POST" autocomplete="off">
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Nama -->
@@ -42,7 +42,7 @@
             <!-- Username -->
             <div class="mb-4">
                 <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
-                <input type="text" id="username" name="username" class="w-full p-2 border border-gray-300 rounded-lg @error('username') border-red-500 @enderror" value="{{ old('username') }}" required>
+                <input type="text" id="username" name="username" class="w-full p-2 border border-gray-300 rounded-lg @error('username') border-red-500 @enderror" value="{{ old('username') }}" autocomplete="off" required>
                 @error('username')
                     <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                 @enderror
@@ -51,7 +51,7 @@
             <!-- Password -->
             <div class="mb-4">
                 <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
-                <input type="password" id="password" name="password" class="w-full p-2 border border-gray-300 rounded-lg @error('password') border-red-500 @enderror" required>
+                <input type="password" id="password" name="password" class="w-full p-2 border border-gray-300 rounded-lg @error('password') border-red-500 @enderror" autocomplete="new-password" required>
                 @error('password')
                     <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                 @enderror
