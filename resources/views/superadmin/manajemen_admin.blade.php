@@ -24,7 +24,7 @@
         <a href="{{ route('admin.create') }}" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-sm hover:bg-green-600">+ Tambah</a>
     </div>
 
-    <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+    <div class="overflow-x-auto bg-white shadow-md">
         <table class="min-w-full table-auto" id="adminTable">
             <thead class="bg-blue-800 text-white">
                 <tr>

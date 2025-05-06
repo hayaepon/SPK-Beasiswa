@@ -7,7 +7,7 @@
     <!-- Menu Navigasi -->
     <nav class="flex-1 mt-4 px-4 space-y-2">
         <!-- Menu Dashboard -->
-        <a href="/dashboard" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
+        <a href="/dashboard-admin" class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700">
             <i data-lucide="home" class="w-5 h-5"></i>
             <span>Dashboard</span>
         </a>

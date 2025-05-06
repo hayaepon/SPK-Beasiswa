@@ -33,7 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Rute untuk dashboard Admin
     Route::get('/dashboard-admin', function () {
         if (Auth::check() && Auth::user()->role === 'admin') {
-            return view('dashboard-admin');
+            return view('admin.dashboard-admin');
         }
         abort(403);
     })->middleware(['auth']);
