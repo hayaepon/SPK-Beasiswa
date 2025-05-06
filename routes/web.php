@@ -47,19 +47,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/kriteria/destroy/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
 });
 
-// Route untuk Sub Kriteria
+//route untuk sub kriteria
 Route::middleware(['auth', 'verified'])->group(function () {
+    // Route untuk melihat data subkriteria (Admin dan Superadmin)
     Route::get('/subkriteria', [SubKriteriaController::class, 'index'])->name('subkriteria.index');
-    Route::get('/subkriteria/create', [SubKriteriaController::class, 'create'])->name('subkriteria.create');
-    Route::post('/subkriteria', [SubKriteriaController::class, 'store'])->name('subkriteria.store');
-    Route::get('/subkriteria/edit/{id}', [SubKriteriaController::class, 'edit'])->name('subkriteria.edit');
-    Route::put('/subkriteria/update/{id}', [SubKriteriaController::class, 'update'])->name('subkriteria.update');
-    Route::delete('/subkriteria/destroy/{id}', [SubKriteriaController::class, 'destroy'])->name('subkriteria.destroy');
+
+    // Route untuk membuat subkriteria (Hanya Superadmin)
+    Route::middleware('role:superadmin')->group(function () {
+        Route::get('/subkriteria/create', [SubKriteriaController::class, 'create'])->name('subkriteria.create');
+        Route::post('/subkriteria', [SubKriteriaController::class, 'store'])->name('subkriteria.store');
+        Route::get('/subkriteria/edit/{id}', [SubKriteriaController::class, 'edit'])->name('subkriteria.edit');
+        Route::put('/subkriteria/update/{id}', [SubKriteriaController::class, 'update'])->name('subkriteria.update');
+        Route::delete('/subkriteria/destroy/{id}', [SubKriteriaController::class, 'destroy'])->name('subkriteria.destroy');
+    });
     
-    // Route to fetch Kriteria by Beasiswa (AJAX)
+    // Route untuk mengambil Kriteria berdasarkan Beasiswa (AJAX)
     Route::get('/subkriteria/kriteria/{beasiswa}', [SubKriteriaController::class, 'getKriteriaByBeasiswa']);
 });
-
 // Route untuk Data Calon Penerima
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/data-calon-penerima', [CalonPenerimaController::class, 'index'])->name('data-calon-penerima');
