@@ -12,7 +12,7 @@ use Illuminate\View\View;
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Display the login view.
+     * Tampilkan tampilan login.
      */
     public function create(): View
     {
@@ -20,40 +20,46 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Handle an incoming authentication request.
+     * Tangani permintaan autentikasi.
      */
     public function store(LoginRequest $request): RedirectResponse
-{
-    $request->authenticate();
-    $request->session()->regenerate();
+    {
+        // Autentikasi dan regenerasi session
+        $request->authenticate();
+        $request->session()->regenerate();
 
-    $selectedRole = $request->input('role'); // role dari dropdown
-    $user = auth()->user();
+        // Ambil peran yang dipilih dari form
+        $selectedRole = $request->input('role'); 
+        $user = auth()->user();
 
-    // Cek apakah role yang dipilih sesuai dengan role user yang login
-    if ($user->role === 'superadmin' && $selectedRole === 'super_admin') {
-        return redirect()->intended('/dashboard-superadmin');
-    } elseif ($user->role === 'admin' && $selectedRole === 'admin') {
-        return redirect()->intended('/dashboard-admin');
+        // Cek apakah peran yang dipilih sesuai dengan peran yang dimiliki oleh pengguna
+        if ($user->role === 'superadmin' && $selectedRole === 'super_admin') {
+            // Redirect ke dashboard superadmin jika role cocok
+            return redirect()->intended('/dashboard-superadmin');
+        } elseif ($user->role === 'admin' && $selectedRole === 'admin') {
+            // Redirect ke dashboard admin jika role cocok
+            return redirect()->intended('/dashboard-admin');
+        }
+
+        // Jika peran tidak cocok, logout dan beri pesan error
+        Auth::logout();
+        return redirect()->route('login')->withErrors(['email' => 'Role tidak sesuai dengan akun.']);
     }
 
-    // Role tidak cocok (misalnya user admin memilih superadmin) -> logout dan tampilkan error
-    Auth::logout();
-    return redirect()->route('login')->withErrors(['email' => 'Role tidak sesuai dengan akun.']);
-}
-
-
     /**
-     * Destroy an authenticated session.
+     * Hancurkan session autentikasi.
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // Logout dan invalidasi session
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
+        // Regenerasi token session untuk keamanan
         $request->session()->regenerateToken();
 
+        // Redirect ke halaman utama setelah logout
         return redirect('/');
     }
 }

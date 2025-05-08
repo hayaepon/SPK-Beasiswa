@@ -80,9 +80,9 @@
         document.querySelectorAll('#role-dropdown button').forEach(btn => {
             btn.addEventListener('click', () => {
                 const role = btn.getAttribute('data-role');
-                roleInput.value = role;
-                currentRoleDisplay.textContent = btn.textContent;
-                dropdown.classList.add('hidden');
+                roleInput.value = role; // Set the value of the hidden input to the selected role
+                currentRoleDisplay.textContent = btn.textContent; // Update the role display text
+                dropdown.classList.add('hidden'); // Hide the dropdown after selecting a role
             });
         });
 
