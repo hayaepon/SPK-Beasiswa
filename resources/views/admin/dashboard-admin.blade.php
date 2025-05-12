@@ -26,7 +26,7 @@
             <div class="text-blue-700 mb-2">
                 <i class="fas fa-users fa-2x"></i>
             </div>
-            <h3 class="text-2xl font-bold">130</h3>
+            <h3 class="text-2xl font-bold">{{ $pendaftar }}</h3>
             <p class="text-gray-600">Jumlah Pendaftar</p>
         </div>
     </div>
@@ -39,7 +39,7 @@
             <div class="text-blue-700 mb-2">
                 <i class="fas fa-user-graduate fa-2x"></i>
             </div>
-            <h3 class="text-2xl font-bold">70</h3>
+            <h3 class="text-2xl font-bold">{{ $pendaftarKipK }}</h3>
             <p class="text-gray-600">Pendaftar KIP-K</p>
         </div>
     </div>
@@ -52,7 +52,7 @@
             <div class="text-blue-700 mb-2">
                 <i class="fas fa-book-open fa-2x"></i>
             </div>
-            <h3 class="text-2xl font-bold">60</h3>
+            <h3 class="text-2xl font-bold">{{ $pendaftarTahfiz }}</h3>
             <p class="text-gray-600">Pendaftar Tahfiz</p>
         </div>
     </div>
@@ -65,7 +65,7 @@
             <div class="text-blue-700 mb-2">
                 <i class="fas fa-check-circle fa-2x"></i>
             </div>
-            <h3 class="text-2xl font-bold">50</h3>
+            <h3 class="text-2xl font-bold">{{ $lolosSeleksi }}</h3>
             <p class="text-gray-600">Lolos Seleksi</p>
         </div>
     </div>
@@ -74,7 +74,7 @@
 <!-- Grafik Pendaftaran -->
 <div class="bg-white p-6 rounded-lg shadow-md shadow-inner mb-8">
     <h3 class="text-xl font-bold mb-4">Grafik Pendaftaran</h3>
-    <div class="h-64 bg-gradient-to-r from-blue-400 to-green-400 rounded-lg"></div>
+    <canvas id="pendaftaranChart"></canvas>
 </div>
 
 <!-- Data Tambahan -->
@@ -90,3 +90,30 @@
 </div>
 
 @endsection
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('pendaftaranChart').getContext('2d');
+    var pendaftaranChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Jumlah Pendaftar', 'Pendaftar Tahfiz', 'Pendaftar KIP-K', 'Lolos Seleksi'],
+            datasets: [{
+                label: 'Jumlah Pendaftar',
+                data: [{{ $pendaftar }}, {{ $pendaftarTahfiz }}, {{ $pendaftarKipK }}, {{ $lolosSeleksi }}],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+@endpush
